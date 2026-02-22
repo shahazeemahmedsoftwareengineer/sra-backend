@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory
 
 object DatabaseConfig {
 
+    private val logger = LoggerFactory.getLogger(DatabaseConfig::class.java)
+
     fun init() {
         logger.info("Initializing database connection...")
 

@@ -732,3 +732,33 @@ JSON input: .....lHandle": "@saraali"
 2026-02-22 15:27:45 [eventLoopGroupProxy-4-2] DEBUG com.sra.entropy.EntropyMixer - Seed mapped to position 0 of 3
 2026-02-22 15:27:45 [eventLoopGroupProxy-4-2] INFO  com.sra.service.ProofService - Proof created: CA78A00029C7FDBD for giveaway: 5
 2026-02-22 15:27:45 [eventLoopGroupProxy-4-2] INFO  com.sra.service.WinnerService - Winner selected | giveaway:5 | winner:Ahmed Khan | position:0
+2026-02-22 17:38:14 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-22 17:38:14 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-22 17:38:15 [main] INFO  Exposed - Preparing create tables statements took 98ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Executing create tables statements took 19ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Extracting table columns took 41ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Extracting primary keys took 20ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Extracting column constraints took 55ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Preparing alter table statements took 127ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Executing alter table statements took 42ms
+2026-02-22 17:38:15 [main] INFO  Exposed - Checking mapping consistence took 33ms
+2026-02-22 17:38:15 [main] INFO  com.sra.config.DatabaseConfig - Database tables verified/created
+2026-02-22 17:38:15 [main] INFO  com.sra.config.DatabaseConfig - Database initialized successfully
+2026-02-22 17:38:15 [main] INFO  Application - SRA Backend started successfully
+2026-02-22 17:38:15 [main] INFO  Application - Application started in 1.932 seconds.
+2026-02-22 17:38:16 [main] INFO  Application - Responding at http://127.0.0.1:8080
+2026-02-22 17:56:28 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-22 17:56:29 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-22 17:56:29 [main] INFO  Exposed - Preparing create tables statements took 29ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Executing create tables statements took 10ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Extracting table columns took 19ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Extracting primary keys took 10ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Extracting column constraints took 43ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Preparing alter table statements took 82ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Executing alter table statements took 23ms
+2026-02-22 17:56:29 [main] INFO  Exposed - Checking mapping consistence took 26ms
+2026-02-22 17:56:29 [main] INFO  com.sra.config.DatabaseConfig - Database tables verified/created
+2026-02-22 17:56:29 [main] INFO  com.sra.config.DatabaseConfig - Database initialized successfully
+2026-02-22 17:56:29 [main] INFO  Application - SRA Backend started successfully
+2026-02-22 17:56:29 [main] INFO  Application - Application started in 1.229 seconds.
+2026-02-22 17:56:30 [main] INFO  Application - Responding at http://127.0.0.1:8080

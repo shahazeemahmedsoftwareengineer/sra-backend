@@ -9,8 +9,8 @@ COPY settings.gradle.kts .
 COPY src src
 
 RUN chmod +x gradlew
-RUN ./gradlew buildFatJar --no-daemon
+RUN ./gradlew installDist --no-daemon
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "build/libs/sra-backend-all.jar"]
+CMD ["./build/install/sra-backend/bin/sra-backend"]

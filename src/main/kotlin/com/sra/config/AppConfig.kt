@@ -13,9 +13,14 @@ object AppConfig {
     val isDevelopment: Boolean get() = environment == "development"
 
     object Database {
-        val url: String get() = dotenv["DATABASE_URL"] ?: "jdbc:postgresql://localhost:5432/sra_db"
-        val user: String get() = dotenv["DATABASE_USER"] ?: "postgres"
-        val password: String get() = dotenv["DATABASE_PASSWORD"] ?: ""
+        val url: String get() {
+            val host = dotenv["PGHOST"] ?: "localhost"
+            val port = dotenv["PGPORT"] ?: "5432"
+            val name = dotenv["PGDATABASE"] ?: "sra_db"
+            return "jdbc:postgresql://$host:$port/$name"
+        }
+        val user: String get() = dotenv["PGUSER"] ?: "postgres"
+        val password: String get() = dotenv["PGPASSWORD"] ?: ""
     }
 
     object Jwt {

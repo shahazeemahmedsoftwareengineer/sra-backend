@@ -13,16 +13,8 @@ object DatabaseConfig {
     fun init() {
         logger.info("Initializing database connection...")
 
-        val rawUrl = AppConfig.Database.url
-
-        val jdbcUrl = if (rawUrl.startsWith("postgresql://")) {
-            rawUrl.replace("postgresql://", "jdbc:postgresql://")
-        } else {
-            rawUrl
-        }
-
         Database.connect(
-            url = jdbcUrl,
+            url = AppConfig.Database.url,
             driver = "org.postgresql.Driver",
             user = AppConfig.Database.user,
             password = AppConfig.Database.password

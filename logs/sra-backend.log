@@ -1080,3 +1080,103 @@ JSON input: Must be authenticated!
 2026-02-23 14:21:29 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
 2026-02-23 14:21:30 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
 2026-02-23 14:21:30 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:35 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:35 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:40 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:40 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:45 [DefaultDispatcher-worker-16] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:21:45 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:21:45 [DefaultDispatcher-worker-14] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:45 [DefaultDispatcher-worker-14] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:50 [DefaultDispatcher-worker-3] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65610.37000000
+2026-02-23 14:21:50 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:21:50 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:50 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:55 [DefaultDispatcher-worker-19] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:55 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:00 [DefaultDispatcher-worker-14] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:00 [DefaultDispatcher-worker-14] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:01 [DefaultDispatcher-worker-19] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:22:01 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:22:06 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:06 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:11 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:11 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:16 [DefaultDispatcher-worker-16] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:16 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:16 [DefaultDispatcher-worker-11] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:22:16 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:22:21 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:21 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:21 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65576.73000000
+2026-02-23 14:22:21 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:22:26 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:26 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:31 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:31 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:32 [DefaultDispatcher-worker-8] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:22:32 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:22:36 [DefaultDispatcher-worker-13] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:22:36 [DefaultDispatcher-worker-13] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:22:39 [main] INFO  com.sra.entropy.EntropyPool - Background entropy collection stopped
+2026-02-23 14:22:41 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 14:22:42 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 14:24:11 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 14:24:12 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 14:24:12 [main] INFO  Exposed - Preparing create tables statements took 40ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Executing create tables statements took 16ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Extracting table columns took 27ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Extracting primary keys took 16ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Extracting column constraints took 54ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Preparing alter table statements took 111ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Executing alter table statements took 65ms
+2026-02-23 14:24:12 [main] INFO  Exposed - Checking mapping consistence took 36ms
+2026-02-23 14:24:12 [main] INFO  com.sra.config.DatabaseConfig - Database tables verified/created
+2026-02-23 14:24:12 [main] INFO  com.sra.config.DatabaseConfig - Database initialized successfully
+2026-02-23 14:24:12 [main] INFO  com.sra.entropy.EntropyPool - Starting background entropy collection...
+2026-02-23 14:24:12 [main] INFO  com.sra.entropy.EntropyPool - Background entropy collection started
+2026-02-23 14:24:12 [DefaultDispatcher-worker-3] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 1 gaps
+2026-02-23 14:24:12 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:13 [main] INFO  Application - SRA Backend started successfully
+2026-02-23 14:24:13 [main] INFO  Application - Application started in 1.818 seconds.
+2026-02-23 14:24:13 [main] INFO  Application - Responding at http://127.0.0.1:8080
+2026-02-23 14:24:13 [DefaultDispatcher-worker-20] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65621.73000000
+2026-02-23 14:24:13 [DefaultDispatcher-worker-20] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:24:13 [DefaultDispatcher-worker-21] DEBUG c.sra.entropy.sources.EthereumSource - Ethereum block entropy collected: 0x1761f79
+2026-02-23 14:24:13 [DefaultDispatcher-worker-21] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:24:13 [DefaultDispatcher-worker-4] DEBUG c.sra.entropy.sources.SeismicSource - Seismic entropy collected
+2026-02-23 14:24:13 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SEISMIC
+2026-02-23 14:24:17 [DefaultDispatcher-worker-7] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 1 gaps
+2026-02-23 14:24:17 [DefaultDispatcher-worker-7] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:22 [DefaultDispatcher-worker-26] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 2 gaps
+2026-02-23 14:24:22 [DefaultDispatcher-worker-26] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:27 [DefaultDispatcher-worker-26] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 3 gaps
+2026-02-23 14:24:27 [DefaultDispatcher-worker-26] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:29 [DefaultDispatcher-worker-21] DEBUG c.sra.entropy.sources.EthereumSource - Ethereum block entropy collected: 0x1761f7b
+2026-02-23 14:24:29 [DefaultDispatcher-worker-21] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:24:32 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 4 gaps
+2026-02-23 14:24:32 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:37 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 5 gaps
+2026-02-23 14:24:37 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:42 [DefaultDispatcher-worker-24] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 6 gaps
+2026-02-23 14:24:42 [DefaultDispatcher-worker-24] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:43 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65587.21000000
+2026-02-23 14:24:43 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:24:45 [DefaultDispatcher-worker-8] DEBUG c.sra.entropy.sources.EthereumSource - Ethereum block entropy collected: 0x1761f7c
+2026-02-23 14:24:45 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:24:47 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 7 gaps
+2026-02-23 14:24:47 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:52 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 8 gaps
+2026-02-23 14:24:52 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:24:57 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 9 gaps
+2026-02-23 14:24:57 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:25:01 [DefaultDispatcher-worker-23] DEBUG c.sra.entropy.sources.EthereumSource - Ethereum block entropy collected: 0x1761f7d
+2026-02-23 14:25:01 [DefaultDispatcher-worker-23] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:25:02 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 10 gaps
+2026-02-23 14:25:02 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:25:07 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 11 gaps
+2026-02-23 14:25:07 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING

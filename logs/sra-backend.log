@@ -1069,3 +1069,14 @@ JSON input: Must be authenticated!
 2026-02-23 14:21:13 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
 2026-02-23 14:21:15 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
 2026-02-23 14:21:15 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:20 [DefaultDispatcher-worker-16] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65610.36000000
+2026-02-23 14:21:20 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:21:20 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:20 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:25 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:25 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:29 [DefaultDispatcher-worker-9] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:21:29 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:21:30 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:30 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING

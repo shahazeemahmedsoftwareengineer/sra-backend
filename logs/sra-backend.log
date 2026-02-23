@@ -13,3 +13,1059 @@
 2026-02-23 00:23:35 [main] INFO  Application - SRA Backend started successfully
 2026-02-23 00:23:35 [main] INFO  Application - Application started in 1.433 seconds.
 2026-02-23 00:23:35 [main] INFO  Application - Responding at http://127.0.0.1:8080
+2026-02-23 00:33:04 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 00:33:04 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 00:33:04 [main] INFO  Exposed - Preparing create tables statements took 28ms
+2026-02-23 00:33:04 [main] INFO  Exposed - Executing create tables statements took 13ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Extracting table columns took 22ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Extracting primary keys took 14ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Extracting column constraints took 50ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Preparing alter table statements took 98ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Executing alter table statements took 31ms
+2026-02-23 00:33:05 [main] INFO  Exposed - Checking mapping consistence took 27ms
+2026-02-23 00:33:05 [main] INFO  com.sra.config.DatabaseConfig - Database tables verified/created
+2026-02-23 00:33:05 [main] INFO  com.sra.config.DatabaseConfig - Database initialized successfully
+2026-02-23 00:33:05 [main] INFO  Application - SRA Backend started successfully
+2026-02-23 00:33:05 [main] INFO  Application - Application started in 1.244 seconds.
+2026-02-23 00:33:05 [main] INFO  Application - Responding at http://127.0.0.1:8080
+2026-02-23 06:45:24 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 06:45:24 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 06:45:25 [main] WARN  Exposed - Transaction attempt #0 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 06:45:25 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 06:45:25 [main] WARN  Exposed - Transaction attempt #1 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 06:45:25 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 06:45:25 [main] WARN  Exposed - Transaction attempt #2 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 06:46:33 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 06:46:33 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 06:46:33 [main] WARN  Exposed - Transaction attempt #0 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 06:46:33 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 06:46:33 [main] WARN  Exposed - Transaction attempt #1 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 06:46:33 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 06:46:33 [main] WARN  Exposed - Transaction attempt #2 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:10:53 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 14:10:54 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 14:10:54 [main] WARN  Exposed - Transaction attempt #0 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:10:54 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 14:10:54 [main] WARN  Exposed - Transaction attempt #1 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:10:54 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 14:10:54 [main] WARN  Exposed - Transaction attempt #2 failed: The server requested SCRAM-based authentication, but the password is an empty string.. Statement(s): null
+org.postgresql.util.PSQLException: The server requested SCRAM-based authentication, but the password is an empty string.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.lambda$doAuthentication$4(ConnectionFactoryImpl.java:849)
+	at org.postgresql.core.v3.AuthenticationPluginManager.withPassword(AuthenticationPluginManager.java:82)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:840)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:13:10 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 14:13:11 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 14:13:11 [main] WARN  Exposed - Transaction attempt #0 failed: FATAL: password authentication failed for user "postgres". Statement(s): null
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:698)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:13:11 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 14:13:11 [main] WARN  Exposed - Transaction attempt #1 failed: FATAL: password authentication failed for user "postgres". Statement(s): null
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:698)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:13:11 [main] WARN  Exposed - Wait 0 milliseconds before retrying
+2026-02-23 14:13:11 [main] WARN  Exposed - Transaction attempt #2 failed: FATAL: password authentication failed for user "postgres". Statement(s): null
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:698)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:207)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273)
+	at org.postgresql.Driver.makeConnection(Driver.java:446)
+	at org.postgresql.Driver.connect(Driver.java:298)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:195)
+	at org.jetbrains.exposed.sql.Database$Companion$connect$7.invoke(Database.kt:191)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:131)
+	at org.jetbrains.exposed.sql.Database$Companion$doConnect$3.invoke(Database.kt:132)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:94)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction$connectionLazy$1.invoke(ThreadLocalTransactionManager.kt:93)
+	at kotlin.UnsafeLazyImpl.getValue(Lazy.kt:81)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManager$ThreadLocalTransaction.getConnection(ThreadLocalTransactionManager.kt:107)
+	at org.jetbrains.exposed.sql.Transaction.getConnection(Transaction.kt)
+	at org.jetbrains.exposed.sql.Database.metadata$exposed_core(Database.kt:41)
+	at org.jetbrains.exposed.sql.vendors.VendorDialect.resetCaches(VendorDialect.kt:136)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns(SchemaUtils.kt:428)
+	at org.jetbrains.exposed.sql.SchemaUtils.createMissingTablesAndColumns$default(SchemaUtils.kt:426)
+	at com.sra.config.DatabaseConfig.createTables$lambda$0(DatabaseConfig.kt:29)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:236)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.access$inTopLevelTransaction$run(ThreadLocalTransactionManager.kt:1)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$inTopLevelTransaction$1.invoke(ThreadLocalTransactionManager.kt:283)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.inTopLevelTransaction(ThreadLocalTransactionManager.kt:282)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt$transaction$1.invoke(ThreadLocalTransactionManager.kt:204)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.keepAndRestoreTransactionRefAfterRun(ThreadLocalTransactionManager.kt:291)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:174)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction(ThreadLocalTransactionManager.kt:162)
+	at org.jetbrains.exposed.sql.transactions.ThreadLocalTransactionManagerKt.transaction$default(ThreadLocalTransactionManager.kt:161)
+	at com.sra.config.DatabaseConfig.createTables(DatabaseConfig.kt:28)
+	at com.sra.config.DatabaseConfig.init(DatabaseConfig.kt:23)
+	at com.sra.ApplicationKt.module(Application.kt:29)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method.callMethod(CallerImpl.kt:97)
+	at kotlin.reflect.jvm.internal.calls.CallerImpl$Method$Static.call(CallerImpl.kt:106)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callDefaultMethod$kotlin_reflection(KCallableImpl.kt:200)
+	at kotlin.reflect.jvm.internal.KCallableImpl.callBy(KCallableImpl.kt:112)
+	at io.ktor.server.engine.internal.CallableUtilsKt.callFunctionWithInjection(CallableUtils.kt:119)
+	at io.ktor.server.engine.internal.CallableUtilsKt.executeModuleFunction(CallableUtils.kt:36)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:332)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$launchModuleByName$1.invoke(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartupFor(ApplicationEngineEnvironmentReloading.kt:356)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.launchModuleByName(ApplicationEngineEnvironmentReloading.kt:331)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.access$launchModuleByName(ApplicationEngineEnvironmentReloading.kt:32)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:312)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading$instantiateAndConfigureApplication$1.invoke(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.avoidingDoubleStartup(ApplicationEngineEnvironmentReloading.kt:338)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.instantiateAndConfigureApplication(ApplicationEngineEnvironmentReloading.kt:310)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.createApplication(ApplicationEngineEnvironmentReloading.kt:150)
+	at io.ktor.server.engine.ApplicationEngineEnvironmentReloading.start(ApplicationEngineEnvironmentReloading.kt:277)
+	at io.ktor.server.netty.NettyApplicationEngine.start(NettyApplicationEngine.kt:216)
+	at io.ktor.server.netty.EngineMain.main(EngineMain.kt:23)
+	at com.sra.ApplicationKt.main(Application.kt:17)
+2026-02-23 14:15:13 [main] INFO  Application - No ktor.deployment.watch patterns match classpath entries, automatic reload is not active
+2026-02-23 14:15:14 [main] INFO  com.sra.config.DatabaseConfig - Initializing database connection...
+2026-02-23 14:15:14 [main] INFO  Exposed - Preparing create tables statements took 98ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Executing create tables statements took 17ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Extracting table columns took 44ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Extracting primary keys took 22ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Extracting column constraints took 64ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Preparing alter table statements took 141ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Executing alter table statements took 44ms
+2026-02-23 14:15:15 [main] INFO  Exposed - Checking mapping consistence took 43ms
+2026-02-23 14:15:15 [main] INFO  com.sra.config.DatabaseConfig - Database tables verified/created
+2026-02-23 14:15:15 [main] INFO  com.sra.config.DatabaseConfig - Database initialized successfully
+2026-02-23 14:15:15 [main] INFO  com.sra.entropy.EntropyPool - Starting background entropy collection...
+2026-02-23 14:15:15 [main] INFO  com.sra.entropy.EntropyPool - Background entropy collection started
+2026-02-23 14:15:15 [DefaultDispatcher-worker-3] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 1 gaps
+2026-02-23 14:15:15 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:15 [main] INFO  Application - SRA Backend started successfully
+2026-02-23 14:15:15 [main] INFO  Application - Application started in 2.011 seconds.
+2026-02-23 14:15:16 [main] INFO  Application - Responding at http://127.0.0.1:8080
+2026-02-23 14:15:16 [DefaultDispatcher-worker-3] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:15:16 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:15:16 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65618.10000000
+2026-02-23 14:15:16 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:15:16 [DefaultDispatcher-worker-13] DEBUG c.sra.entropy.sources.SeismicSource - Seismic entropy collected
+2026-02-23 14:15:16 [DefaultDispatcher-worker-13] DEBUG com.sra.entropy.EntropyPool - Pool updated from SEISMIC
+2026-02-23 14:15:20 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 1 gaps
+2026-02-23 14:15:20 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:25 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 2 gaps
+2026-02-23 14:15:25 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:30 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 3 gaps
+2026-02-23 14:15:30 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:31 [DefaultDispatcher-worker-10] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:15:31 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:15:35 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 4 gaps
+2026-02-23 14:15:35 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:40 [DefaultDispatcher-worker-19] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 5 gaps
+2026-02-23 14:15:40 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:45 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 6 gaps
+2026-02-23 14:15:45 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:46 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65634.32000000
+2026-02-23 14:15:46 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:15:47 [DefaultDispatcher-worker-4] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:15:47 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:15:50 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 7 gaps
+2026-02-23 14:15:50 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:15:55 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 8 gaps
+2026-02-23 14:15:55 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:00 [DefaultDispatcher-worker-6] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 9 gaps
+2026-02-23 14:16:00 [DefaultDispatcher-worker-6] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:02 [DefaultDispatcher-worker-10] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:16:02 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:16:05 [DefaultDispatcher-worker-7] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 10 gaps
+2026-02-23 14:16:05 [DefaultDispatcher-worker-7] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:10 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 11 gaps
+2026-02-23 14:16:10 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:15 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 12 gaps
+2026-02-23 14:16:15 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:17 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65623.71000000
+2026-02-23 14:16:17 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:16:18 [DefaultDispatcher-worker-10] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:16:18 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:16:20 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 13 gaps
+2026-02-23 14:16:20 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:25 [DefaultDispatcher-worker-21] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 14 gaps
+2026-02-23 14:16:25 [DefaultDispatcher-worker-21] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:30 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 15 gaps
+2026-02-23 14:16:30 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:33 [DefaultDispatcher-worker-17] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:16:33 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:16:35 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 16 gaps
+2026-02-23 14:16:35 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:40 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 17 gaps
+2026-02-23 14:16:40 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:45 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 18 gaps
+2026-02-23 14:16:45 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:47 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65624.00000000
+2026-02-23 14:16:47 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:16:49 [DefaultDispatcher-worker-1] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:16:49 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:16:50 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 19 gaps
+2026-02-23 14:16:50 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:16:55 [DefaultDispatcher-worker-13] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:16:55 [DefaultDispatcher-worker-13] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:00 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:00 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:04 [DefaultDispatcher-worker-16] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:17:04 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:17:05 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:05 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:10 [DefaultDispatcher-worker-6] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:10 [DefaultDispatcher-worker-6] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:15 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:15 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:17 [DefaultDispatcher-worker-16] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65615.55000000
+2026-02-23 14:17:17 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:17:20 [DefaultDispatcher-worker-16] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:17:20 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:17:20 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:20 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:25 [DefaultDispatcher-worker-15] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:25 [DefaultDispatcher-worker-15] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:30 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:30 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:35 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:35 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:35 [DefaultDispatcher-worker-5] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:17:35 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:17:40 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:40 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:45 [DefaultDispatcher-worker-1] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:45 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:48 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65620.00000000
+2026-02-23 14:17:48 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:17:50 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:50 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:17:51 [DefaultDispatcher-worker-5] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:17:51 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:17:55 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:17:55 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:00 [DefaultDispatcher-worker-3] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:00 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:05 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:05 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:06 [DefaultDispatcher-worker-17] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:18:06 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:18:10 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:10 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:15 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:15 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:18 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65603.48000000
+2026-02-23 14:18:18 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:18:20 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:20 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:22 [DefaultDispatcher-worker-10] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:18:22 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:18:25 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:25 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:30 [DefaultDispatcher-worker-16] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:30 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:35 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:35 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:37 [DefaultDispatcher-worker-4] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:18:37 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:18:40 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:40 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:45 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:45 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:48 [DefaultDispatcher-worker-19] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65603.48000000
+2026-02-23 14:18:48 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:18:50 [DefaultDispatcher-worker-18] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:50 [DefaultDispatcher-worker-18] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:18:53 [DefaultDispatcher-worker-4] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:18:53 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:18:55 [DefaultDispatcher-worker-8] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:18:55 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:00 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:00 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:05 [DefaultDispatcher-worker-8] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:05 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:08 [DefaultDispatcher-worker-17] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:19:08 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:19:10 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:10 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:15 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:15 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:19 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65614.33000000
+2026-02-23 14:19:19 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:19:20 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:20 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:23 [DefaultDispatcher-worker-6] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:19:23 [DefaultDispatcher-worker-6] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:19:25 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:25 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:30 [DefaultDispatcher-worker-13] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:30 [DefaultDispatcher-worker-13] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:35 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:35 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:39 [DefaultDispatcher-worker-4] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:19:39 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:19:40 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:40 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:45 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:45 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:49 [DefaultDispatcher-worker-10] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65613.97000000
+2026-02-23 14:19:49 [DefaultDispatcher-worker-10] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:19:50 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:50 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:19:55 [DefaultDispatcher-worker-9] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:19:55 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:19:55 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:19:55 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:00 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:00 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:05 [DefaultDispatcher-worker-17] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:05 [DefaultDispatcher-worker-17] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:10 [DefaultDispatcher-worker-6] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:10 [DefaultDispatcher-worker-6] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:11 [DefaultDispatcher-worker-14] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:20:11 [DefaultDispatcher-worker-14] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:20:15 [DefaultDispatcher-worker-7] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:15 [DefaultDispatcher-worker-7] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:17 [DefaultDispatcher-worker-20] DEBUG c.sra.entropy.sources.SeismicSource - Seismic entropy collected
+2026-02-23 14:20:17 [DefaultDispatcher-worker-20] DEBUG com.sra.entropy.EntropyPool - Pool updated from SEISMIC
+2026-02-23 14:20:19 [DefaultDispatcher-worker-8] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65612.66000000
+2026-02-23 14:20:19 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:20:20 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:20 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:25 [DefaultDispatcher-worker-4] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:25 [DefaultDispatcher-worker-4] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:26 [DefaultDispatcher-worker-19] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:20:26 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:20:30 [DefaultDispatcher-worker-8] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:30 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:35 [DefaultDispatcher-worker-3] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:35 [DefaultDispatcher-worker-3] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:40 [DefaultDispatcher-worker-8] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:40 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:42 [DefaultDispatcher-worker-1] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:20:42 [DefaultDispatcher-worker-1] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:20:45 [DefaultDispatcher-worker-12] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:45 [DefaultDispatcher-worker-12] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:50 [DefaultDispatcher-worker-13] DEBUG c.s.e.sources.CryptoPriceSource - Crypto price entropy collected: BTC = 65597.26000000
+2026-02-23 14:20:50 [DefaultDispatcher-worker-13] DEBUG com.sra.entropy.EntropyPool - Pool updated from CRYPTO_PRICE
+2026-02-23 14:20:50 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:50 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:55 [DefaultDispatcher-worker-2] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:20:55 [DefaultDispatcher-worker-2] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:20:57 [DefaultDispatcher-worker-8] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:20:57 [DefaultDispatcher-worker-8] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:21:00 [DefaultDispatcher-worker-16] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:00 [DefaultDispatcher-worker-16] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:05 [DefaultDispatcher-worker-5] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:05 [DefaultDispatcher-worker-5] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:10 [DefaultDispatcher-worker-11] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:10 [DefaultDispatcher-worker-11] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING
+2026-02-23 14:21:13 [DefaultDispatcher-worker-19] WARN  c.sra.entropy.sources.EthereumSource - Failed to collect Ethereum data, using fallback: Unexpected JSON token at offset 0: Expected start of the object '{', but had 'M' instead at path: $
+JSON input: Must be authenticated!
+2026-02-23 14:21:13 [DefaultDispatcher-worker-19] DEBUG com.sra.entropy.EntropyPool - Pool updated from ETHEREUM
+2026-02-23 14:21:15 [DefaultDispatcher-worker-9] DEBUG c.s.e.sources.ServerTimingSource - Server timing entropy collected: 20 gaps
+2026-02-23 14:21:15 [DefaultDispatcher-worker-9] DEBUG com.sra.entropy.EntropyPool - Pool updated from SERVER_TIMING

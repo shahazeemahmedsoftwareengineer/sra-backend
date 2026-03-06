@@ -1,0 +1,10 @@
+.env
+*.jks
+keystore.jks
+*.log
+build/
+.gradle/
+
+.env
+*.jks
+keystore.jks

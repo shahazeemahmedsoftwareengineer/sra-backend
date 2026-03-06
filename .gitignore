@@ -8,3 +8,7 @@ build/
 .env
 *.jks
 keystore.jks
+
+.env
+*.jks
+keystore.jks

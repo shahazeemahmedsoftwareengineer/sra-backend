@@ -16,13 +16,20 @@ object DatabaseConfig {
 
     fun init() {
         logger.info("Initializing database connection...")
-
-        Database.connect(
-            url = AppConfig.Database.url,
-            driver = "org.postgresql.Driver",
-            user = AppConfig.Database.user,
-            password = AppConfig.Database.password
-        )
+        
+        val dbUrl = AppConfig.Database.url
+        
+        if (dbUrl.contains("@")) {
+            // URL contains credentials (Railway format)
+            Database.connect(url = dbUrl, driver = "org.postgresql.Driver")
+        } else {
+            Database.connect(
+                url = dbUrl,
+                driver = "org.postgresql.Driver",
+                user = AppConfig.Database.user,
+                password = AppConfig.Database.password
+            )
+        }
 
         createTables()
         logger.info("Database initialized successfully")

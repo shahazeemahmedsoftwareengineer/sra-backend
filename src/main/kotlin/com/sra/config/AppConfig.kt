@@ -14,13 +14,34 @@ object AppConfig {
 
     object Database {
         val url: String get() {
-            val host = dotenv["PGHOST"] ?: "localhost"
-            val port = dotenv["PGPORT"] ?: "5432"
-            val name = dotenv["PGDATABASE"] ?: "sra_db"
+            // Railway provides DATABASE_URL directly
+            val databaseUrl = System.getenv("DATABASE_URL")
+                ?: dotenv.getOrDefault("DATABASE_URL", "")
+            
+            if (databaseUrl.isNotEmpty()) {
+                // Railway format: postgresql://user:password@host:port/dbname
+                // Convert to JDBC format
+                return databaseUrl
+                    .replace("postgresql://", "jdbc:postgresql://")
+                    .replace("postgres://", "jdbc:postgresql://")
+            }
+            
+            // Fallback to individual vars (local development)
+            val host = dotenv.getOrDefault("PGHOST", "localhost")
+            val port = dotenv.getOrDefault("PGPORT", "5433")
+            val name = dotenv.getOrDefault("PGDATABASE", "sra_db")
             return "jdbc:postgresql://$host:$port/$name"
         }
-        val user: String get() = dotenv["PGUSER"] ?: "postgres"
-        val password: String get() = dotenv["PGPASSWORD"] ?: ""
+        val user: String get() {
+            val databaseUrl = System.getenv("DATABASE_URL") ?: ""
+            if (databaseUrl.isNotEmpty()) return ""  // extracted from URL
+            return dotenv.getOrDefault("PGUSER", "postgres")
+        }
+        val password: String get() {
+            val databaseUrl = System.getenv("DATABASE_URL") ?: ""
+            if (databaseUrl.isNotEmpty()) return ""  // extracted from URL
+            return dotenv.getOrDefault("PGPASSWORD", "")
+        }
     }
 
     object Jwt {

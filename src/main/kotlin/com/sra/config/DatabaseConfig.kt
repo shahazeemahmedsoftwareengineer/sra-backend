@@ -16,6 +16,8 @@ object DatabaseConfig {
 
     fun init() {
         logger.info("Initializing database connection...")
+        logger.info("DATABASE_URL env: {}", System.getenv("DATABASE_URL") ?: "NOT SET")
+        logger.info("DB URL resolved: {}", AppConfig.Database.url)
         
         val dbUrl = AppConfig.Database.url
         
@@ -81,3 +83,4 @@ object DatabaseConfig {
         return false
     }
 }
+

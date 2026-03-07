@@ -45,6 +45,7 @@ class AuthService(private val userRepository: UserRepository) {
         val token = SecurityConfig.generateToken(user.id, user.email)
         logger.info("User logged in: ${user.email}")
 
+        // Always return fresh user from DB (includes latest plan)
         return AuthResponse(token = token, user = user)
     }
 
@@ -52,6 +53,20 @@ class AuthService(private val userRepository: UserRepository) {
         val apiKey = userRepository.generateApiKey(userId)
         logger.info("API key generated for user: $userId")
         return apiKey
+    }
+
+    // ── NEW: Update plan by email (called from Stripe webhook) ──
+    fun updatePlanByEmail(email: String, plan: String): Boolean {
+        val updated = userRepository.updatePlanByEmail(email.lowercase().trim(), plan)
+        if (updated) {
+            logger.info("Plan updated via webhook: $email → $plan")
+        }
+        return updated
+    }
+
+    // ── NEW: Get user by email (for plan sync) ──
+    fun getUserByEmail(email: String): com.sra.domain.models.User? {
+        return userRepository.findUserByEmail(email.lowercase().trim())
     }
 
     private fun validateRegisterRequest(request: RegisterRequest) {

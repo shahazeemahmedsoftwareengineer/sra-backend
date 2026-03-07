@@ -1,5 +1,6 @@
 package com.sra.security
 
+import kotlinx.serialization.Serializable
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 import java.time.Instant
@@ -10,6 +11,13 @@ object IPBlocker {
     private val logger = LoggerFactory.getLogger(IPBlocker::class.java)
     private val failedAttempts = ConcurrentHashMap<String, AtomicInteger>()
     private val blockedIPs = ConcurrentHashMap<String, Instant>()
+
+    @Serializable
+    data class BlockerStats(
+        val totalBlockedIPs: Int,
+        val blockedIPs: List<String>,
+        val suspiciousIPs: List<String>
+    )
 
     fun recordFailedLogin(ip: String) {
         val count = failedAttempts
@@ -41,11 +49,11 @@ object IPBlocker {
         }
     }
 
-    fun getStats(): Map<String, Any> {
-        return mapOf(
-            "totalBlockedIPs" to blockedIPs.size,
-            "blockedIPs" to blockedIPs.keys.toList(),
-            "suspiciousIPs" to failedAttempts
+    fun getStats(): BlockerStats {
+        return BlockerStats(
+            totalBlockedIPs = blockedIPs.size,
+            blockedIPs = blockedIPs.keys.toList(),
+            suspiciousIPs = failedAttempts
                 .filter { it.value.get() >= 3 }
                 .map { "${it.key} (${it.value.get()} attempts)" }
         )

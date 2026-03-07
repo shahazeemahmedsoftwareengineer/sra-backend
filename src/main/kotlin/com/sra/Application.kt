@@ -86,7 +86,10 @@ fun Application.module() {
     configureCORS()
     configureStatusPages()
     configureSecurity()
-    configureRouting(authService, giveawayService, entryService, winnerService, proofService)
+    configureRateLimiting()
+    configureSecurityHeaders()
+    configureIntrusionDetection()
+    configureRouting(authService, giveawayService, entryService, winnerService, proofService, entropyService)
 }
 
 private fun Application.ensureConfiguredPortIsAvailable() {

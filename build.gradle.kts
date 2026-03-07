@@ -28,6 +28,8 @@ dependencies {
     implementation("io.ktor:ktor-server-cors:$ktor_version")
     implementation("io.ktor:ktor-server-call-logging:$ktor_version")
     implementation("io.ktor:ktor-server-rate-limit:$ktor_version")
+    implementation("io.ktor:ktor-network-tls-certificates:$ktor_version")
+    implementation("io.ktor:ktor-server-default-headers:$ktor_version")
 
     // Ktor Client
     implementation("io.ktor:ktor-client-core:$ktor_version")
@@ -56,6 +58,7 @@ dependencies {
     // Testing
     testImplementation(kotlin("test"))
     testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
+    implementation("io.ktor:ktor-server-rate-limit:${ktor_version}")
 }
 
 application {

@@ -1,5 +1,6 @@
 package com.sra.security
 
+import kotlinx.serialization.Serializable
 import org.slf4j.LoggerFactory
 import java.time.Instant
 import java.util.concurrent.ConcurrentHashMap
@@ -14,11 +15,18 @@ object IntrusionDetector {
     private val requestTimestamps = ConcurrentHashMap<String, Instant>()
     private val alerts = mutableListOf<SecurityAlert>()
 
+    @Serializable
     data class SecurityAlert(
         val type: String,
         val ip: String,
         val details: String,
-        val timestamp: Instant = Instant.now()
+        val timestamp: String = Instant.now().toString()  // String not Instant
+    )
+
+    @Serializable
+    data class AlertsResponse(
+        val totalAlerts: Int,
+        val recentAlerts: List<SecurityAlert>
     )
 
     fun recordRequest(ip: String, path: String, userAgent: String?) {
@@ -69,12 +77,15 @@ object IntrusionDetector {
         }
     }
 
-    fun getAlerts(): List<SecurityAlert> = alerts.takeLast(100)
-
-    fun getAlertCount(): Int = alerts.size
+    fun getAlertsResponse(): AlertsResponse {
+        return AlertsResponse(
+            totalAlerts = alerts.size,
+            recentAlerts = alerts.takeLast(100)
+        )
+    }
 
     private fun triggerAlert(type: String, ip: String, details: String) {
-        val alert = SecurityAlert(type, ip, details)
+        val alert = SecurityAlert(type, ip, details, Instant.now().toString())
         alerts.add(alert)
         logger.error("SECURITY ALERT | $type | IP: $ip | $details")
         // TODO: Add email/Slack notification here

@@ -7,9 +7,9 @@ import java.time.LocalDateTime
 object EntropyLogsTable : Table("entropy_logs") {
     val id = integer("id").autoIncrement()
     val giveawayId = integer("giveaway_id").references(GiveawaysTable.id).nullable()
-    val bitcoinPrice = varchar("bitcoin_price", 50).nullable()
+    val bitcoinPrice = varchar("bitcoin_price", 500).nullable()
     val serverTimingData = text("server_timing_data").nullable()
-    val ethereumBlockHash = varchar("ethereum_block_hash", 128).nullable()
+    val ethereumBlockHash = varchar("ethereum_block_hash", 500).nullable()
     val seismicData = text("seismic_data").nullable()
     val rawCombinedString = text("raw_combined_string")
     val sha256Hash = varchar("sha256_hash", 128)

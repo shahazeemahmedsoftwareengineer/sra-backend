@@ -47,6 +47,36 @@ class UserRepository {
         }
     }
 
+    fun findUserByEmail(email: String): User? {
+        return transaction {
+            UsersTable.select { UsersTable.email eq email }
+                .singleOrNull()
+                ?.toUser()
+        }
+    }
+
+    // ── UPDATE PLAN BY EMAIL (called from Stripe webhook) ──
+    fun updatePlanByEmail(email: String, plan: String): Boolean {
+        return transaction {
+            val updated = UsersTable.update({ UsersTable.email eq email }) {
+                it[UsersTable.plan] = plan
+                it[UsersTable.updatedAt] = LocalDateTime.now()
+            }
+            updated > 0
+        }
+    }
+
+    // ── UPDATE PLAN BY USER ID ──
+    fun updatePlanById(userId: Int, plan: String): Boolean {
+        return transaction {
+            val updated = UsersTable.update({ UsersTable.id eq userId }) {
+                it[UsersTable.plan] = plan
+                it[UsersTable.updatedAt] = LocalDateTime.now()
+            }
+            updated > 0
+        }
+    }
+
     fun generateApiKey(userId: Int): String {
         val apiKey = "sra_${UUID.randomUUID().toString().replace("-", "")}"
         transaction {

@@ -1,4 +1,4 @@
-﻿package com.sra.config
+package com.sra.config
 
 import com.sra.domain.tables.*
 import org.jetbrains.exposed.sql.Database
@@ -15,17 +15,8 @@ object DatabaseConfig {
 
     fun init() {
         val dbUrl = buildJdbcUrl()
-        val dbUser = System.getenv("PGUSER") ?: "postgres"
-        val dbPass = System.getenv("PGPASSWORD") ?: ""
-
-        logger.info("Connecting to DB: {}", dbUrl)
-
-        Database.connect(
-            url = dbUrl,
-            driver = "org.postgresql.Driver",
-            user = dbUser,
-            password = dbPass
-        )
+        logger.info("Connecting to DB...")
+        Database.connect(url = dbUrl, driver = "org.postgresql.Driver")
         createTables()
         logger.info("Database initialized successfully")
     }
@@ -33,18 +24,28 @@ object DatabaseConfig {
     private fun buildJdbcUrl(): String {
         val rawUrl = System.getenv("DATABASE_URL") ?: ""
         if (rawUrl.isNotEmpty()) {
-            val jdbc = rawUrl
-                .replace("postgresql://", "jdbc:postgresql://")
-                .replace("postgres://", "jdbc:postgresql://")
             logger.info("Using DATABASE_URL")
-            return jdbc
+            // Parse postgresql://user:password@host:port/db
+            // Convert to jdbc:postgresql://host:port/db?user=user&password=pass
+            val withoutScheme = rawUrl
+                .removePrefix("postgresql://")
+                .removePrefix("postgres://")
+            val atIndex = withoutScheme.lastIndexOf("@")
+            val credentials = withoutScheme.substring(0, atIndex)
+            val hostAndDb = withoutScheme.substring(atIndex + 1)
+            val colonIndex = credentials.indexOf(":")
+            val user = credentials.substring(0, colonIndex)
+            val pass = credentials.substring(colonIndex + 1)
+            return "jdbc:postgresql://$hostAndDb?user=$user&password=$pass&sslmode=require"
         }
 
         val host = System.getenv("PGHOST") ?: "localhost"
         val port = System.getenv("PGPORT") ?: "5433"
         val db   = System.getenv("PGDATABASE") ?: "sra_db"
+        val user = System.getenv("PGUSER") ?: "postgres"
+        val pass = System.getenv("PGPASSWORD") ?: ""
         logger.info("Using PGHOST={} PGPORT={} PGDATABASE={}", host, port, db)
-        return "jdbc:postgresql://$host:$port/$db"
+        return "jdbc:postgresql://$host:$port/$db?user=$user&password=$pass"
     }
 
     private fun createTables() {
@@ -82,3 +83,4 @@ object DatabaseConfig {
         return false
     }
 }
+

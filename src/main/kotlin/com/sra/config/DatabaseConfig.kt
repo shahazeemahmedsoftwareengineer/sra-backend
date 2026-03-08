@@ -1,4 +1,4 @@
-package com.sra.config
+﻿package com.sra.config
 
 import com.sra.domain.tables.*
 import org.jetbrains.exposed.sql.Database
@@ -9,34 +9,42 @@ import java.net.ConnectException
 import java.sql.SQLException
 
 object DatabaseConfig {
-
     private val logger = LoggerFactory.getLogger(DatabaseConfig::class.java)
     private const val maxDbInitAttempts = 10
     private const val dbInitRetryDelayMs = 1000L
 
     fun init() {
-        logger.info("Initializing database connection...")
-        logger.info("DATABASE_URL env: {}", System.getenv("DATABASE_URL") ?: "NOT SET")
-        logger.info("DB URL resolved: {}", AppConfig.Database.url)
-        logger.info("DATABASE_URL env: {}", System.getenv("DATABASE_URL") ?: "NOT SET")
-        logger.info("DB URL resolved: {}", AppConfig.Database.url)
-        
-        val dbUrl = AppConfig.Database.url
-        
-        if (dbUrl.contains("@")) {
-            // URL contains credentials (Railway format)
-            Database.connect(url = dbUrl, driver = "org.postgresql.Driver")
-        } else {
-            Database.connect(
-                url = dbUrl,
-                driver = "org.postgresql.Driver",
-                user = AppConfig.Database.user,
-                password = AppConfig.Database.password
-            )
-        }
+        val dbUrl = buildJdbcUrl()
+        val dbUser = System.getenv("PGUSER") ?: "postgres"
+        val dbPass = System.getenv("PGPASSWORD") ?: ""
 
+        logger.info("Connecting to DB: {}", dbUrl)
+
+        Database.connect(
+            url = dbUrl,
+            driver = "org.postgresql.Driver",
+            user = dbUser,
+            password = dbPass
+        )
         createTables()
         logger.info("Database initialized successfully")
+    }
+
+    private fun buildJdbcUrl(): String {
+        val rawUrl = System.getenv("DATABASE_URL") ?: ""
+        if (rawUrl.isNotEmpty()) {
+            val jdbc = rawUrl
+                .replace("postgresql://", "jdbc:postgresql://")
+                .replace("postgres://", "jdbc:postgresql://")
+            logger.info("Using DATABASE_URL")
+            return jdbc
+        }
+
+        val host = System.getenv("PGHOST") ?: "localhost"
+        val port = System.getenv("PGPORT") ?: "5433"
+        val db   = System.getenv("PGDATABASE") ?: "sra_db"
+        logger.info("Using PGHOST={} PGPORT={} PGDATABASE={}", host, port, db)
+        return "jdbc:postgresql://$host:$port/$db"
     }
 
     private fun createTables() {
@@ -56,15 +64,8 @@ object DatabaseConfig {
                 logger.info("Database tables verified/created")
                 return
             } catch (e: Exception) {
-                if (!isConnectionException(e) || attempt >= maxDbInitAttempts) {
-                    throw e
-                }
-                logger.warn(
-                    "Database is not ready (attempt {}/{}). Retrying in {} ms...",
-                    attempt,
-                    maxDbInitAttempts,
-                    dbInitRetryDelayMs
-                )
+                if (!isConnectionException(e) || attempt >= maxDbInitAttempts) throw e
+                logger.warn("Database not ready (attempt {}/{}). Retrying...", attempt, maxDbInitAttempts)
                 Thread.sleep(dbInitRetryDelayMs)
                 attempt++
             }
@@ -74,16 +75,10 @@ object DatabaseConfig {
     private fun isConnectionException(error: Throwable): Boolean {
         var current: Throwable? = error
         while (current != null) {
-            if (current is ConnectException) {
-                return true
-            }
-            if (current is SQLException && current.sqlState?.startsWith("08") == true) {
-                return true
-            }
+            if (current is ConnectException) return true
+            if (current is SQLException && current.sqlState?.startsWith("08") == true) return true
             current = current.cause
         }
         return false
     }
 }
-
-

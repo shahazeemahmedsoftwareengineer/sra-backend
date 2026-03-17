@@ -70,7 +70,7 @@ class ShieldService(
         logger.info("Encrypting data for userId=$userId")
 
         // Get user's active key from database
-        val activeKey = shieldRepository.getActiveKey(userId)
+        val activeKey = shieldRepository.getInternalActiveKey(userId)
             ?: throw IllegalStateException("No active key found. Generate a key first.")
 
         // Convert stored hex key back to bytes
@@ -95,7 +95,7 @@ class ShieldService(
     fun decrypt(userId: Int, encrypted: String): ShieldDecryptResponse {
         logger.info("Decrypting data for userId=$userId")
 
-        val activeKey = shieldRepository.getActiveKey(userId)
+        val activeKey = shieldRepository.getInternalActiveKey(userId)
             ?: throw IllegalStateException("No active key found.")
 
         val keyBytes = HashUtils.hexToBytes(activeKey.encryptionKey)

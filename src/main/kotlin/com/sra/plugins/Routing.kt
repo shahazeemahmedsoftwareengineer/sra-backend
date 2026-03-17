@@ -21,10 +21,7 @@ fun Application.configureRouting(
 
     routing {
 
-        // ── FIX 9: INTRUSION DETECTION ────────────────────────────
-        // Runs on EVERY incoming request before it hits any route
-        // Checks for port scanning, suspicious paths, known scanners
-        intercept(io.ktor.server.routing.RoutingRoot.Phases.Call) {
+        intercept(ApplicationCallPipeline.Plugins) {
             val ip        = call.request.local.remoteAddress
             val path      = call.request.local.uri
             val userAgent = call.request.headers["User-Agent"]
@@ -35,7 +32,7 @@ fun Application.configureRouting(
         giveawayRoutes(giveawayService)
         entryRoutes(entryService)
         winnerRoutes(winnerService)
-        proofService.let { proofRoutes(it) }
+        proofRoutes(proofService)
         webhookRoutes(authService)
         shieldRoutes(shieldService, shieldRepository)
     }

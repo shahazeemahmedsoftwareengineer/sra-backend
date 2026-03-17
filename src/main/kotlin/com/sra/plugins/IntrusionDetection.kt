@@ -5,7 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 
 fun Application.configureIntrusionDetection() {
-    intercept(ApplicationCallPipeline.Monitoring) {
+    intercept(ApplicationCallPipeline.Plugins) {
         val ip = call.request.local.remoteAddress
         val path = call.request.path()
         val userAgent = call.request.headers["User-Agent"]

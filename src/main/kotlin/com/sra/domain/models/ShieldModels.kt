@@ -78,3 +78,19 @@ data class InternalActiveKey(
     val encryptionKey: String,
     val verificationCode: String
 )
+
+@Serializable
+data class ShieldEncryptResponse(
+    val encrypted: String,
+    val algorithm: String,
+    val keyCode: String,
+    val encryptedAt: String
+)
+
+@Serializable
+data class ShieldDecryptResponse(
+    val plaintext: String,
+    val algorithm: String,
+    val verified: Boolean,
+    val decryptedAt: String
+)

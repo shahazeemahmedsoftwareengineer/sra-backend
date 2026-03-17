@@ -90,4 +90,10 @@ object IntrusionDetector {
         logger.error("SECURITY ALERT | $type | IP: $ip | $details")
         // TODO: Add email/Slack notification here
     }
+
+    // Called by InputValidator when attack pattern is detected
+    fun recordAttempt(type: String, field: String, details: String) {
+        val ip = "INPUT_VALIDATION"  // no IP available here, comes from validator
+        triggerAlert(type, ip, "Field: $field | $details")
+    }
 }

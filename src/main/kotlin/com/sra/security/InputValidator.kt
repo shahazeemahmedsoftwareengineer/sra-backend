@@ -1,98 +1,156 @@
 package com.sra.security
 
 import com.sra.utils.BadRequestException
-import org.slf4j.LoggerFactory
 
 object InputValidator {
 
-    private val logger = LoggerFactory.getLogger(InputValidator::class.java)
-
-    private val sqlInjectionPatterns = listOf(
-        "' OR ", "' AND ", "1=1", "1 = 1",
-        "UNION SELECT", "DROP TABLE", "DROP DATABASE",
-        "INSERT INTO", "DELETE FROM", "UPDATE SET",
-        "--", "/*", "*/", "xp_", "EXEC(",
-        "EXECUTE(", "CAST(", "CONVERT(",
-        "CHAR(", "NCHAR(", "VARCHAR("
+    // ── SQL INJECTION PATTERNS ────────────────────────────────────
+    private val SQL_INJECTION_PATTERNS = listOf(
+        Regex("(?i)(SELECT|INSERT|UPDATE|DELETE|DROP|TRUNCATE|ALTER|CREATE|EXEC|EXECUTE|UNION|SCRIPT)\\s"),
+        Regex("(?i)(OR|AND)\\s+[\\w'\"]+\\s*=\\s*[\\w'\"]+"),
+        Regex("--"),           // SQL comment
+        Regex(";\\s*\\w"),     // chained SQL statement
+        Regex("(?i)xp_"),      // SQL Server stored procs
+        Regex("(?i)WAITFOR\\s+DELAY"),
+        Regex("(?i)BENCHMARK\\s*\\("),
+        Regex("'\\s*(OR|AND)"),
+        Regex("1\\s*=\\s*1"),  // classic tautology
+        Regex("(?i)SLEEP\\s*\\(")
     )
 
-    private val xssPatterns = listOf(
-        "<script>", "</script>", "javascript:",
-        "onerror=", "onload=", "onclick=",
-        "onmouseover=", "eval(", "alert(",
-        "document.cookie", "window.location",
-        "<iframe>", "<img src=", "data:text/html"
+    // ── XSS PATTERNS ──────────────────────────────────────────────
+    private val XSS_PATTERNS = listOf(
+        Regex("(?i)<script[^>]*>"),
+        Regex("(?i)</script>"),
+        Regex("(?i)javascript\\s*:"),
+        Regex("(?i)on\\w+\\s*="),      // onclick=, onload=, onerror=
+        Regex("(?i)<iframe"),
+        Regex("(?i)<img[^>]+src\\s*="),
+        Regex("(?i)eval\\s*\\("),
+        Regex("(?i)document\\.cookie"),
+        Regex("(?i)document\\.write"),
+        Regex("(?i)<svg[^>]*onload"),
+        Regex("(?i)alert\\s*\\("),
+        Regex("(?i)\\bvbscript\\s*:"),
+        Regex("(?i)<object"),
+        Regex("(?i)<embed"),
+        Regex("(?i)base64\\s*,")       // base64 encoded payloads
     )
 
-    private val pathTraversalPatterns = listOf(
-        "../", "..\\", "%2e%2e",
-        "/etc/passwd", "/etc/shadow",
-        "C:\\Windows", "cmd.exe",
-        "/bin/bash", "/bin/sh"
+    // ── PATH TRAVERSAL PATTERNS ───────────────────────────────────
+    private val PATH_TRAVERSAL_PATTERNS = listOf(
+        Regex("\\.\\./"),       // ../
+        Regex("\\.\\.\\\\"),    // ..\
+        Regex("%2e%2e%2f", RegexOption.IGNORE_CASE),  // URL encoded ../
+        Regex("%252e%252e", RegexOption.IGNORE_CASE)  // double encoded
     )
 
-    // Master check — runs all validations
-    fun validate(input: String, fieldName: String = "input"): String {
-        if (input.isBlank()) return input
-
-        val upper = input.uppercase()
-
-        // Check SQL injection
-        sqlInjectionPatterns.forEach { pattern ->
-            if (upper.contains(pattern.uppercase())) {
-                logger.warn("SQL injection attempt detected in $fieldName: $pattern")
-                throw BadRequestException("Invalid characters in $fieldName")
-            }
+    // ── MAIN VALIDATE ─────────────────────────────────────────────
+    // Call this on any free-text input from user
+    fun validate(input: String, fieldName: String) {
+        if (input.isBlank()) {
+            throw BadRequestException("$fieldName cannot be empty")
         }
-
-        // Check XSS
-        xssPatterns.forEach { pattern ->
-            if (upper.contains(pattern.uppercase())) {
-                logger.warn("XSS attempt detected in $fieldName: $pattern")
-                throw BadRequestException("Invalid characters in $fieldName")
-            }
-        }
-
-        // Check path traversal
-        pathTraversalPatterns.forEach { pattern ->
-            if (upper.contains(pattern.uppercase())) {
-                logger.warn("Path traversal attempt in $fieldName: $pattern")
-                throw BadRequestException("Invalid characters in $fieldName")
-            }
-        }
-
-        return input
+        checkSqlInjection(input, fieldName)
+        checkXss(input, fieldName)
+        checkPathTraversal(input, fieldName)
     }
 
-    fun validateEmail(email: String): String {
-        val trimmed = email.trim().lowercase()
-        if (!trimmed.matches(Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"))) {
+    // ── LENGTH CHECK ──────────────────────────────────────────────
+    fun validateLength(input: String, fieldName: String, maxLength: Int) {
+        if (input.length > maxLength) {
+            throw BadRequestException(
+                "$fieldName exceeds maximum length of $maxLength characters"
+            )
+        }
+    }
+
+    // ── EMAIL VALIDATE ────────────────────────────────────────────
+    fun validateEmail(email: String) {
+        if (email.isBlank()) {
+            throw BadRequestException("Email cannot be empty")
+        }
+        validateLength(email, "email", 254) // RFC 5321 max
+
+        // Basic structure check
+        val emailRegex = Regex("^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$")
+        if (!emailRegex.matches(email.trim())) {
             throw BadRequestException("Invalid email format")
         }
-        return trimmed
+
+        // Still check for injection even in email
+        checkSqlInjection(email, "email")
+        checkXss(email, "email")
     }
 
+    // ── PASSWORD VALIDATE ─────────────────────────────────────────
     fun validatePassword(password: String) {
+        if (password.isBlank()) {
+            throw BadRequestException("Password cannot be empty")
+        }
         if (password.length < 8) {
             throw BadRequestException("Password must be at least 8 characters")
         }
-        if (password.length > 128) {
-            throw BadRequestException("Password too long")
+        validateLength(password, "password", 128)
+
+        if (!password.any { it.isUpperCase() }) {
+            throw BadRequestException("Password must contain at least one uppercase letter")
+        }
+        if (!password.any { it.isDigit() }) {
+            throw BadRequestException("Password must contain at least one number")
+        }
+        // Note: no XSS/SQL check on password — it gets hashed immediately
+        // and bcrypt handles any special chars safely
+    }
+
+    // ── VERIFICATION CODE VALIDATE ────────────────────────────────
+    // Only allow SRA-K-XXXXXXXX format — no injection possible
+    fun validateVerificationCode(code: String) {
+        val codeRegex = Regex("^SRA-[A-Z]-[A-Z0-9]{8}$")
+        if (!codeRegex.matches(code)) {
+            throw BadRequestException("Invalid verification code format")
         }
     }
 
-    fun validateTier(tier: String): String {
-        val valid = listOf("fast", "medium", "full")
-        if (tier.lowercase() !in valid) {
-            throw BadRequestException("Tier must be fast, medium or full")
+    // ── PRIVATE CHECKERS ──────────────────────────────────────────
+
+    private fun checkSqlInjection(input: String, fieldName: String) {
+        SQL_INJECTION_PATTERNS.forEach { pattern ->
+            if (pattern.containsMatchIn(input)) {
+                // Log attempt but don't reveal which pattern matched
+                IntrusionDetector.recordAttempt(
+                    type    = "SQL_INJECTION",
+                    field   = fieldName,
+                    details = "Blocked SQL injection attempt in $fieldName"
+                )
+                throw BadRequestException("Invalid characters in $fieldName")
+            }
         }
-        return tier.lowercase()
     }
 
-    fun validateLength(input: String, fieldName: String, maxLength: Int): String {
-        if (input.length > maxLength) {
-            throw BadRequestException("$fieldName too long (max $maxLength characters)")
+    private fun checkXss(input: String, fieldName: String) {
+        XSS_PATTERNS.forEach { pattern ->
+            if (pattern.containsMatchIn(input)) {
+                IntrusionDetector.recordAttempt(
+                    type    = "XSS_ATTEMPT",
+                    field   = fieldName,
+                    details = "Blocked XSS attempt in $fieldName"
+                )
+                throw BadRequestException("Invalid characters in $fieldName")
+            }
         }
-        return input
+    }
+
+    private fun checkPathTraversal(input: String, fieldName: String) {
+        PATH_TRAVERSAL_PATTERNS.forEach { pattern ->
+            if (pattern.containsMatchIn(input)) {
+                IntrusionDetector.recordAttempt(
+                    type    = "PATH_TRAVERSAL",
+                    field   = fieldName,
+                    details = "Blocked path traversal attempt in $fieldName"
+                )
+                throw BadRequestException("Invalid characters in $fieldName")
+            }
+        }
     }
 }

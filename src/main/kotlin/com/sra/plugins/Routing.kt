@@ -1,6 +1,7 @@
 package com.sra.plugins
 
 import com.sra.repository.ShieldRepository
+import com.sra.repository.UsageRepository
 import com.sra.routes.*
 import com.sra.security.IntrusionDetector
 import com.sra.service.*
@@ -17,7 +18,8 @@ fun Application.configureRouting(
     entropyService: EntropyService
 ) {
     val shieldRepository = ShieldRepository()
-    val shieldService = ShieldService(entropyService, shieldRepository)
+    val usageRepository  = UsageRepository()           // ← ADD THIS
+    val shieldService    = ShieldService(entropyService, shieldRepository)
 
     routing {
 
@@ -34,6 +36,6 @@ fun Application.configureRouting(
         winnerRoutes(winnerService)
         proofRoutes(proofService)
         webhookRoutes(authService)
-        shieldRoutes(shieldService, shieldRepository)
+        shieldRoutes(shieldService, shieldRepository, usageRepository)  // ← ADD usageRepository
     }
 }

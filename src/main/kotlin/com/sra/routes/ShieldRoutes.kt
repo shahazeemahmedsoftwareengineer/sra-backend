@@ -4,6 +4,7 @@ import com.sra.domain.models.DecryptRequest
 import com.sra.domain.models.EncryptRequest
 import com.sra.domain.models.GenerateKeyRequest
 import com.sra.repository.ShieldRepository
+import com.sra.repository.UsageRepository
 import com.sra.security.InputValidator
 import com.sra.service.ShieldService
 import com.sra.utils.AES256GCM
@@ -20,13 +21,37 @@ import org.slf4j.LoggerFactory
 
 private val logger = LoggerFactory.getLogger("ShieldRoutes")
 
-fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRepository) {
+// Create a reusable plugin to check API usage limits
+private val CheckUsageLimit = createRouteScopedPlugin("CheckUsageLimit") {
+    val usageRepository = UsageRepository() // Or get it via DI
+
+    on(Call) { call ->
+        val userId = call.requireUserId()
+        val usage = usageRepository.getUsage(userId)
+        if (usage.warningLevel == "exceeded") {
+            call.respond(HttpStatusCode.PaymentRequired, ApiResponse(
+                success = false,
+                message = "Monthly API call limit reached. Please upgrade your plan."
+            ))
+            finish() // Stop processing the request
+        }
+    }
+}
+
+fun Route.shieldRoutes(
+    shieldService:    ShieldService,
+    shieldRepository: ShieldRepository,
+    usageRepository:  UsageRepository
+) {
 
     route("/api/v1/shield") {
 
         // ── PROTECTED ROUTES (require JWT) ────────────────────────
         rateLimit(RateLimitName("shield")) {
             authenticate("auth-jwt") {
+
+                // Install the usage check plugin for all routes in this block
+                install(CheckUsageLimit)
 
                 // POST /api/v1/shield/keys/generate
                 post("/keys/generate") {
@@ -38,8 +63,13 @@ fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRep
                     }
                     val validTiers = setOf("fast", "medium", "full")
                     val tier = if (request.tier in validTiers) request.tier else "full"
+
                     logger.info("Key generation requested | userId=$userId | tier=$tier")
                     val result = shieldService.generateKey(userId, tier)
+
+                    // Track usage
+                    usageRepository.incrementApiCalls(userId)
+
                     call.respond(
                         HttpStatusCode.OK,
                         ApiResponse.success(result, "Encryption key generated successfully")
@@ -51,6 +81,7 @@ fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRep
                     val userId = call.requireUserId()
                     logger.info("Key rotation requested | userId=$userId")
                     val result = shieldService.rotateKey(userId)
+                    usageRepository.incrementApiCalls(userId)
                     call.respond(
                         HttpStatusCode.OK,
                         ApiResponse.success(result, "Key rotated successfully")
@@ -67,12 +98,10 @@ fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRep
                     )
                 }
 
-                // Encrypt data using a Shield key
+                // POST /api/v1/shield/encrypt
                 post("/encrypt") {
                     val userId = call.requireUserId()
                     val request = call.receive<EncryptRequest>()
-
-                    // Validate input
                     InputValidator.validate(request.plaintext, "plaintext")
                     InputValidator.validateLength(request.plaintext, "plaintext", 10000)
 
@@ -80,6 +109,10 @@ fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRep
                         ?: throw com.sra.utils.NotFoundException("No active key. Generate a key first.")
 
                     val encrypted = AES256GCM.encrypt(request.plaintext, activeKey.encryptionKey)
+
+                    // Track usage
+                    usageRepository.incrementApiCalls(userId)
+
                     call.respond(HttpStatusCode.OK, ApiResponse(
                         success = true,
                         message = "Encrypted with AES-256-GCM",
@@ -87,20 +120,33 @@ fun Route.shieldRoutes(shieldService: ShieldService, shieldRepository: ShieldRep
                     ))
                 }
 
-                // Decrypt data using a Shield key
+                // POST /api/v1/shield/decrypt
                 post("/decrypt") {
                     val userId = call.requireUserId()
                     val request = call.receive<DecryptRequest>()
-
                     val activeKey = shieldRepository.getInternalActiveKey(userId)
                         ?: throw com.sra.utils.NotFoundException("No active key found.")
 
                     val decrypted = AES256GCM.decrypt(request.encrypted, activeKey.encryptionKey)
 
+                    // Track usage
+                    usageRepository.incrementApiCalls(userId)
+
                     call.respond(HttpStatusCode.OK, ApiResponse(
                         success = true,
                         message = "Data decrypted successfully",
                         data = mapOf("plaintext" to decrypted)
+                    ))
+                }
+
+                // GET /api/v1/shield/usage
+                get("/usage") {
+                    val userId = call.requireUserId()
+                    val usage  = usageRepository.getUsage(userId)
+                    call.respond(HttpStatusCode.OK, ApiResponse(
+                        success = true,
+                        message = "Usage retrieved",
+                        data    = usage
                     ))
                 }
             }

@@ -58,6 +58,7 @@ fun Application.module() {
     val giveawayRepository = GiveawayRepository()
     val entryRepository = EntryRepository()
     val proofRepository = ProofRepository()
+    val usageRepository = UsageRepository() // Added UsageRepository
 
     val entropyPool = EntropyPool(httpClient)
 
@@ -73,6 +74,7 @@ fun Application.module() {
     environment.monitor.subscribe(ApplicationStopped) {
         entropyPool.stopBackgroundCollection()
         applicationScope.cancel()
+        httpClient.close() // Gracefully close the HTTP client
     }
 
     val authService = AuthService(userRepository)
@@ -89,7 +91,7 @@ fun Application.module() {
     configureRateLimiting()
     configureSecurityHeaders()
     configureIntrusionDetection()
-    configureRouting(authService, giveawayService, entryService, winnerService, proofService, entropyService)
+    configureRouting(authService, giveawayService, entryService, winnerService, proofService, entropyService, usageRepository) // Passed usageRepository
 }
 
 private fun Application.ensureConfiguredPortIsAvailable() {

@@ -58,7 +58,7 @@ fun Application.module() {
     val giveawayRepository = GiveawayRepository()
     val entryRepository = EntryRepository()
     val proofRepository = ProofRepository()
-    val usageRepository = UsageRepository() // Added UsageRepository
+
 
     val entropyPool = EntropyPool(httpClient)
 
@@ -91,7 +91,7 @@ fun Application.module() {
     configureRateLimiting()
     configureSecurityHeaders()
     configureIntrusionDetection()
-    configureRouting(authService, giveawayService, entryService, winnerService, proofService, entropyService, usageRepository) // Passed usageRepository
+    configureRouting(authService, giveawayService, entryService, winnerService, proofService, entropyService)
 }
 
 private fun Application.ensureConfiguredPortIsAvailable() {

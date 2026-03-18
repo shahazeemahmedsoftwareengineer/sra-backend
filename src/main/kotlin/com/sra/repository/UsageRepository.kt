@@ -6,8 +6,10 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.plus
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
+@Serializable
 data class UsageData(
     val planName:        String,
     val callsUsed:       Int,

@@ -59,7 +59,8 @@ object DatabaseConfig {
                         EntriesTable,
                         ProofsTable,
                         EntropyLogsTable,
-                        ShieldKeysTable
+                        ShieldKeysTable,
+                        ActivityLogsTable
                     )
                 }
                 logger.info("Database tables verified/created")

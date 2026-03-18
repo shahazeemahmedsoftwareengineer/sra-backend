@@ -1,28 +1,28 @@
 package com.sra.plugins
 
+import com.sra.repository.ActivityRepository
 import com.sra.repository.ShieldRepository
 import com.sra.repository.UsageRepository
 import com.sra.routes.*
 import com.sra.security.IntrusionDetector
 import com.sra.service.*
 import io.ktor.server.application.*
-import io.ktor.server.plugins.ratelimit.*
 import io.ktor.server.routing.*
 
 fun Application.configureRouting(
-    authService: AuthService,
+    authService:     AuthService,
     giveawayService: GiveawayService,
-    entryService: EntryService,
-    winnerService: WinnerService,
-    proofService: ProofService,
-    entropyService: EntropyService
+    entryService:    EntryService,
+    winnerService:   WinnerService,
+    proofService:    ProofService,
+    entropyService:  EntropyService
 ) {
-    val shieldRepository = ShieldRepository()
-    val usageRepository  = UsageRepository()           // ← ADD THIS
-    val shieldService    = ShieldService(entropyService, shieldRepository)
+    val shieldRepository   = ShieldRepository()
+    val usageRepository    = UsageRepository()
+    val activityRepository = ActivityRepository()
+    val shieldService      = ShieldService(entropyService, shieldRepository)
 
     routing {
-
         intercept(ApplicationCallPipeline.Plugins) {
             val ip        = call.request.local.remoteAddress
             val path      = call.request.local.uri
@@ -36,6 +36,6 @@ fun Application.configureRouting(
         winnerRoutes(winnerService)
         proofRoutes(proofService)
         webhookRoutes(authService)
-        shieldRoutes(shieldService, shieldRepository, usageRepository)  // ← ADD usageRepository
+        shieldRoutes(shieldService, shieldRepository, usageRepository, activityRepository)
     }
 }

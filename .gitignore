@@ -5,10 +5,3 @@ keystore.jks
 build/
 .gradle/
 
-.env
-*.jks
-keystore.jks
-
-.env
-*.jks
-keystore.jks

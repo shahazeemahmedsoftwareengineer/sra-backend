@@ -134,14 +134,14 @@ fun Route.shieldRoutes(
                 get("/usage") {
                     val userId = call.requireUserId()
                     val usage  = usageRepository.getUsage(userId)
-                    call.respond(HttpStatusCode.OK, ApiResponse(true, "Usage retrieved", usage))
+                    call.respond(HttpStatusCode.OK, ApiResponse.success(usage, "Usage retrieved"))
                 }
 
                 // ── ACTIVITY ──────────────────────────────────────
                 get("/activity") {
                     val userId   = call.requireUserId()
                     val activity = activityRepository.getActivity(userId)
-                    call.respond(HttpStatusCode.OK, ApiResponse(true, "Activity retrieved", activity))
+                    call.respond(HttpStatusCode.OK, ApiResponse.success(activity, "Activity retrieved"))
                 }
             }
         }
